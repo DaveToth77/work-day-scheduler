@@ -72,3 +72,18 @@ $(".taskBox").on("blur", "textarea", function () {
     $(this).replaceWith(taskP);
 });
 
+//Save tasks
+$(".saveBtn").on("click", function () {
+    //   console.log("<save button> was clicked");
+    var index = $(".saveBtn").index(this);
+    //   console.log(index)
+    tasks[index] = $(this).parent().find(".taskItem").text();
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+});
+
+setInterval(function () {
+    hourAudit();
+}, 1000 * 60 * 60);
+
+loadTasks();
+hourAudit();
