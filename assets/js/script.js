@@ -1,3 +1,8 @@
+var Today = (moment().format("MMMM D, YYYY"))
+$("#currentDay").text(Today);
+
+
+
 tasks = [];
 
 //load tasks
@@ -19,4 +24,20 @@ var addTask = function () {
 
         $("#task-item-" + list).replaceWith(taskP);
     })
+}
+
+//color code hours bins
+var hourAudit = function () {
+    var currentHour = moment().hour()
+
+    for (var i = 0; i < 17; i++) {
+        var taskArea = $("#task-" + i)
+        if (currentHour > i) {
+            $(taskArea).addClass("past");
+        } else if (currentHour === i) {
+            $(taskArea).addClass("present");
+        } else {
+            $(taskArea).addClass("future")
+        }
+    }
 }
