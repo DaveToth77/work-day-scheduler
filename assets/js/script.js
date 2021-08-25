@@ -41,3 +41,34 @@ var hourAudit = function () {
         }
     }
 }
+//Task update with click
+$(".taskBox").on("click", "p", function () {
+    // console.log("<p> was clicked");
+    var text = $(this)
+        .text()
+        .trim();
+    var textInput = $("<textarea>")
+        .addClass("form-control")
+        .val(text);
+
+    $(this).replaceWith(textInput);
+    textInput.trigger("focus");
+});
+
+//Task needs to be updated
+$(".taskBox").on("blur", "textarea", function () {
+    //get the textareas; current value/text
+    var text = $(this)
+        .val()
+        .trim();
+    // console.log(text)
+
+    //recreate p element
+    var taskP = $("<p>")
+        .addClass("taskItem")
+        .text(text);
+
+    // replace textarea with p element
+    $(this).replaceWith(taskP);
+});
+
