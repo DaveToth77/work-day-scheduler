@@ -1,7 +1,8 @@
 # work-day-scheduler
 
 ## Purpose
-A website that displays my work and provides contact information
+A browser based calendar application that allows a user to save events for each hour of the day. Each time block is color-coded to indicate whether it is in the past, present, or future based on the current time.
+
 
 ## Built With
 * HTML
