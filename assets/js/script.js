@@ -2,7 +2,6 @@ var Today = (moment().format("MMMM D, YYYY"))
 $("#currentDay").text(Today);
 
 
-
 tasks = [];
 
 //load tasks
@@ -11,10 +10,10 @@ var loadTasks = function () {
     if (!tasks) {
         tasks = {};
     };
-    addTask(tasks)
+    printTasks(tasks)
 }
 
-var addTask = function () {
+var printTasks = function () {
     $.each(tasks, function (list, arr) {
 
         var taskP = $("<p>").addClass("description task-item-" + list).text(arr)
@@ -26,11 +25,15 @@ var addTask = function () {
     })
 }
 
+
+
+
+
 //color code hours bins
 var hourAudit = function () {
     var currentHour = moment().hour()
 
-    for (var i = 0; i < 17; i++) {
+    for (var i = 9; i < 18; i++) {
         var taskArea = $("#task-" + i)
         if (currentHour > i) {
             $(taskArea).addClass("past");
@@ -41,8 +44,9 @@ var hourAudit = function () {
         }
     }
 }
+
 //Task update with click
-$(".taskBox").on("click", "p", function () {
+$(".taskBin").on("click", "p", function () {
     // console.log("<p> was clicked");
     var text = $(this)
         .text()
@@ -56,7 +60,7 @@ $(".taskBox").on("click", "p", function () {
 });
 
 //Task needs to be updated
-$(".taskBox").on("blur", "textarea", function () {
+$(".taskBin").on("blur", "textarea", function () {
     //get the textareas; current value/text
     var text = $(this)
         .val()
